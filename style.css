@@ -1,5 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
 .bigtext {
-  width: 50%; /* Remplacez cette valeur par la largeur souhaitée */
-  margin-left: auto;
-  margin-right: auto;
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+form {
+  width: 80%;
+  max-width: 500px;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#currency {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 10px;
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.select {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.selectCurrency {
+  flex: 1;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 16px;
+  margin-right: 5px;
+}
+
+.fas {
+  font-size: 30px;
+  color: #333;
+  cursor: pointer;
+}
+
+.convert {
+  width: 100%;
+  height: 40px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.finalAmount {
+  color: #333;
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  background-color: #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 450px) {
+  form {
+      width: 90%;
+  }
 }
