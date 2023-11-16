@@ -13,7 +13,6 @@ if (false !== $response_json) {
     }
 }
 
-// Tableau associatif pour stocker les symboles des devises
 $currencySymbols = array(
     'USD' => '$',
     'EUR' => '€',
@@ -173,11 +172,9 @@ $currencySymbols = array(
     'WST' => 'WS$',
     'XAF' => 'FCFA',
     'XCD' => '$',
-
-    // Ajoutez d'autres devises avec leurs symboles ici
 );
 
-// Process the form
+
 $convertedAmount = null;
 $toCurrencySymbol = '';
 
@@ -220,37 +217,40 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         <p> Taux de change en temps réel </p>
     </div>
     <form action="" method="get">
-        <input type="text" name="currency" id="currency" required placeholder="Entrez votre montant">
+        <input type="text" name="currency" id="currency" required placeholder="Entrez votre montant € £ $ ¥ ">
+        
         <div class="select">
-            <select id="old_currency" name="old_currency" class="selectCurrency">
-                <?php
-                // Display dropdown options for old currency
-                if (isset($currencies)) {
-                    foreach ($currencies as $currencyCode) {
-                        $selected = ($currencyCode == 'EUR') ? 'selected' : ''; // Ajout de l'attribut selected pour EUR
-                        echo "<option value=\"$currencyCode\" $selected>{$currencyCode}</option>";
-                    }
-                }
-                ?>
-            </select>
-            <i class="fas fa-exchange-alt" onclick="swapCurrencies()"></i>
-            <select id="new_currency" name="new_currency" class="selectCurrency">
-                <?php
-                // Display dropdown options for old currency
-                if (isset($currencies)) {
-                    foreach ($currencies as $currencyCode) {
-                        $selected = ($currencyCode == 'USD') ? 'selected' : ''; // Ajout de l'attribut selected pour USD
-                        echo "<option value=\"$currencyCode\" $selected>{$currencyCode}</option>";
-                     
-                    }
-                }
-                ?>
-            </select>
-        </div>
+    <select id="old_currency" name="old_currency" class="selectCurrency">
+        <?php
+        
+        if (isset($currencies)) {
+            foreach ($currencies as $currencyCode) {
+                $selected = ($currencyCode == 'EUR') ? 'selected' : '';
+                $symbol = isset($currencySymbols[$currencyCode]) ? $currencySymbols[$currencyCode] : '';
+                echo "<option value=\"$currencyCode\" $selected data-symbol=\"$symbol\">{$currencyCode}</option>";
+            }
+        }
+        ?>
+    </select>
+    <i class="fas fa-exchange-alt" onclick="swapCurrencies()"></i>
+    <select id="new_currency" name="new_currency" class="selectCurrency">
+        <?php
+     
+        if (isset($currencies)) {
+            foreach ($currencies as $currencyCode) {
+                $selected = ($currencyCode == 'USD') ? 'selected' : '';
+                $symbol = isset($currencySymbols[$currencyCode]) ? $currencySymbols[$currencyCode] : '';
+                echo "<option value=\"$currencyCode\" $selected data-symbol=\"$symbol\">{$currencyCode}</option>";
+            }
+        }
+        ?>
+    </select>
+</div>
+
 
         <input type="submit" value="Convertir" class="convert">
         <?php
-        // Display the converted amount with the symbol of the destination currency
+        
         if ($convertedAmount !== null) {
             echo "<h5 class=\"finalAmount\"> $convertedAmount $toCurrencySymbol $toCurrency</h5>";
         }
@@ -263,7 +263,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
             var tempCurrency = oldCurrencySelect.value;
             oldCurrencySelect.value = newCurrencySelect.value;
             newCurrencySelect.value = tempCurrency;
-            // Set the exchangeFlag to 1 to indicate that the currencies were swapped
+
             document.getElementById('exchangeFlag').value = 1;
         }
     </script>
