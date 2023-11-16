@@ -2,11 +2,16 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
 }
 
 body {
   font-family: 'Arial', sans-serif;
   background-color: #f0f0f0;
+  background-image: url(./img/_27eb585a-100f-474d-994a-9e104ad032d0.jpeg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,16 +20,24 @@ body {
 }
 
 .bigtext {
+  width: 50%;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
   text-align: center;
   font-size: 24px;
   color: #333;
-  margin-bottom: 20px;
+  position: absolute;
+  top: 20%;
+  transform: translateY(-50%);
+  background-color: #f1f5f1;
+  border-radius: 5px;
 }
 
 form {
   width: 80%;
   max-width: 500px;
-  margin: 20px auto;
+  margin: 50px auto 20px; /* Ajoutez une marge en haut du formulaire */
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;
@@ -43,8 +56,16 @@ form {
 
 .select {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center; /* Ajustez pour centrer horizontalement */
   margin-bottom: 15px;
+}
+
+.fas {
+  font-size: 30px;
+  color: #333;
+  cursor: pointer;
+  margin: 0 10px; /* Ajustez l'espace autour de l'icône pour centrer verticalement */
 }
 
 .selectCurrency {
@@ -54,14 +75,8 @@ form {
   border-radius: 5px;
   padding: 5px;
   font-size: 16px;
-  margin-right: 5px;
 }
 
-.fas {
-  font-size: 30px;
-  color: #333;
-  cursor: pointer;
-}
 
 .convert {
   width: 100%;
