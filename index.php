@@ -1,6 +1,6 @@
 <?php
 $apiKey = '7ec3115638d87587d5f0bbdd';
-$req_url = "https://v6.exchangerate-api.com/v6/{$apiKey}/latest/USD";
+$req_url = "https://v6.exchangerate-api.com/v6/{$apiKey}/latest/EUR";
 $response_json = file_get_contents($req_url);
 
 if (false !== $response_json) {
@@ -227,7 +227,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 // Display dropdown options for old currency
                 if (isset($currencies)) {
                     foreach ($currencies as $currencyCode) {
-                        echo "<option value=\"$currencyCode\">{$currencyCode}</option>";
+                        $selected = ($currencyCode == 'EUR') ? 'selected' : ''; // Ajout de l'attribut selected pour EUR
+                        echo "<option value=\"$currencyCode\" $selected>{$currencyCode}</option>";
                     }
                 }
                 ?>
@@ -238,7 +239,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                 // Display dropdown options for old currency
                 if (isset($currencies)) {
                     foreach ($currencies as $currencyCode) {
-                        echo "<option value=\"$currencyCode\">{$currencyCode}</option>";
+                        $selected = ($currencyCode == 'USD') ? 'selected' : ''; // Ajout de l'attribut selected pour USD
+                        echo "<option value=\"$currencyCode\" $selected>{$currencyCode}</option>";
+                     
                     }
                 }
                 ?>
