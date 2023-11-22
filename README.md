@@ -29,7 +29,7 @@ Version live [>>>>>>ici<<<<<<](http://guillaumeconverter.infinityfreeapp.com/)
 ## Technologies Utilisées :computer:
 
 - PHP
-- InfinityFree
+- InfinityFree (deploy)
 
 ## Développement en Local :wrench:
 
